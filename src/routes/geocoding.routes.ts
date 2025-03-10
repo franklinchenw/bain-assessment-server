@@ -161,6 +161,6 @@ router.post("/distance", geocodingController.calculateDistance);
  *       500:
  *         description: Server error
  */
-router.get("/distance/history", geocodingController.getDistanceHistory);
+router.get("/history", geocodingController.getDistanceHistory);
 
 export default router;

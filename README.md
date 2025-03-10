@@ -2,6 +2,18 @@
 
 Distance Calculation backend service
 
+# Documentation
+
+```bash
+http://ec2-3-225-45-11.compute-1.amazonaws.com:4000/api-docs
+```
+
+# Live endpoint
+
+```bash
+http://ec2-3-225-45-11.compute-1.amazonaws.com:4000/
+```
+
 ## Prerequisites
 
 - Node.js (v16 or higher)
