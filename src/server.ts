@@ -15,8 +15,13 @@ import swaggerJsdoc from "swagger-jsdoc";
 // init db connection
 Model.knex(db);
 const app = express();
-// disable cors for local development
-// app.use(cors({ origin: envStore.corsOrigins }));
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
+);
 app.use(express.json());
 
 // Swagger documentation
