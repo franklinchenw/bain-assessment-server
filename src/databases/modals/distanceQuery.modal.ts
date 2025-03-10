@@ -8,9 +8,8 @@ export class DistanceQuery extends Model {
   id!: number;
   address1!: string;
   address2!: string;
-  distance!: number;
   unit!: string;
-  metadata!: any;
+  metadata!: DistanceQuery.DistanceMetadata;
   request_user_id!: string;
   created_at!: Date;
   updated_at!: Date;
@@ -41,7 +40,16 @@ export class DistanceQuery extends Model {
 export namespace DistanceQuery {
   export enum Unit {
     KM = "KM",
-    M = "M",
+    MI = "MI",
+    BOTH = "BOTH",
+  }
+
+  export interface DistanceMetadata {
+    distance: {
+      [Unit.KM]: number;
+      [Unit.MI]: number;
+    };
+    coordinates: Coordinates;
   }
 
   export interface Coordinates {

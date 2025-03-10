@@ -13,7 +13,6 @@ export async function up(knex: Knex): Promise<void> {
       table.uuid("id").primary().defaultTo(knex.raw(`uuid_generate_v4()`));
       table.string("address1").notNullable();
       table.string("address2").notNullable();
-      table.float("distance").notNullable();
       table.string("unit").notNullable().defaultTo("KM");
       table.jsonb("metadata").notNullable().defaultTo("{}");
       table.string("request_user_id").references("user.id").notNullable();

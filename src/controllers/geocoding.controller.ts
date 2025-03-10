@@ -5,6 +5,7 @@ import response from "../utilities/response";
 import { HTTP_STATUS_CODE } from "../constants/httpStatusCode";
 import { createPagination, PaginationParams } from "../utilities/pagination";
 import * as yup from "yup";
+import { DistanceQuery } from "../databases/modals/distanceQuery.modal";
 
 export class GeocodingController {
   private geocodingService: GeocodingService;
@@ -20,8 +21,9 @@ export class GeocodingController {
 
       // Validate input
       const distanceSchema = yup.object({
-        address1: yup.string().required().trim().max(255),
-        address2: yup.string().required().trim().max(255),
+        address1: yup.string().required().trim(),
+        address2: yup.string().required().trim(),
+        unit: yup.string().required().trim().oneOf(Object.values(DistanceQuery.Unit)),
       });
       const validatedData = await distanceSchema.validate(req.body, {
         abortEarly: false,
