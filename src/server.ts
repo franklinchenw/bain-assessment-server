@@ -9,6 +9,8 @@ import { Model } from "objection";
 import { db } from "./utilities/db";
 import authenticateUser from "./middlewares/authentication";
 import { defaultRateLimiter } from "./utilities/rate-limiter";
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
 
 // init db connection
 Model.knex(db);
@@ -16,6 +18,28 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Swagger documentation
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Distance Calculation API",
+      version: "1.0.0",
+      description: "API for calculating distances between two addresses",
+    },
+    servers: [
+      {
+        url: "/api",
+        description: "API server",
+      },
+    ],
+  },
+  apis: ["./src/routes/*.ts"],
+};
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(options)));
+
+// API routes
 app.use("/api", authenticateUser, routes);
 
 // apply rate limiting to all routes
