@@ -15,7 +15,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 // init db connection
 Model.knex(db);
 const app = express();
-app.use(cors());
+app.use(cors({ origin: envStore.corsOrigins }));
 app.use(express.json());
 
 // Swagger documentation
