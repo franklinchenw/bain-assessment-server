@@ -5,13 +5,13 @@ Distance Calculation backend service
 # Documentation
 
 ```bash
-http://ec2-3-225-45-11.compute-1.amazonaws.com:4000/api-docs
+https://api.frankie-chen.com/api-docs
 ```
 
 # Live endpoint
 
 ```bash
-http://ec2-3-225-45-11.compute-1.amazonaws.com:4000/
+https://api.frankie-chen.com/api
 ```
 
 ## Prerequisites
