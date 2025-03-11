@@ -17,9 +17,10 @@ Model.knex(db);
 const app = express();
 app.use(
   cors({
-    origin: "*",
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
+    origin: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["*"],
+    credentials: true,
   })
 );
 app.use(express.json());
